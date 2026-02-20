@@ -25,7 +25,7 @@ function get<T>(url: string): Promise<T> {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
 
-      return res.json();
+      return res.json() as Promise<T>;
     });
 }
 

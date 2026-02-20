@@ -32,7 +32,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (!selectedTodo) {
-      setSelectedUser(null);
+      setLoadingUser(false);
 
       return;
     }
@@ -73,7 +73,6 @@ export const App: React.FC = () => {
 
   const handleSelectTodo = (todo: Todo) => {
     setSelectedTodo(todo);
-    setLoadingUser(true);
   };
 
   const handleCloseModal = () => {
@@ -111,7 +110,7 @@ export const App: React.FC = () => {
               {!loading && errorMessage && (
                 <div className="notification is-danger">{errorMessage}</div>
               )}
-              {!loading && (
+              {!loading && !errorMessage && (
                 <TodoList
                   todos={filteredTodos}
                   selectedTodoId={selectedTodo?.id || null}
